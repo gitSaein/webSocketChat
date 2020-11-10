@@ -3,11 +3,13 @@ package com.example.webchat.controller;
 import com.example.webchat.dto.ChatRoom;
 import com.example.webchat.services.ChatService;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
-@RestController
+@Controller
 @RequestMapping(path = "/api/chat")
 public class ChatController {
 
@@ -23,9 +25,10 @@ public class ChatController {
         return chatService.createChatRoom(name);
     }
 
-    @GetMapping("/get_all")
+    @GetMapping("/")
     @ApiOperation(value = "Test Sample", tags = "sample")
-    public ArrayList<ChatRoom> getAllChatRoom(){
-        return chatService.findAllChatRoom();
+    public String getAllChatRoom(Model model){
+        model.addAttribute("rooms", chatService.findAllChatRoom());
+        return "rooms";
     }
 }

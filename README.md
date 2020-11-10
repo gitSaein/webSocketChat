@@ -10,4 +10,8 @@ web page의 한계에서 벗어나 실시간으로 상호작용하는 웹 서비
 
 
   * server: client = 1: n
+  
+ websocket과 stomp를 통해 채팅 서버 구현
+ 
+ 
 
