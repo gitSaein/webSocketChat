@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title># Chat #</title>
 
-</body>
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+        <!-- 부가적인 테마 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+        <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <!-- container -->
+        <div class="container">
+<!--            <table class = "table table-striped">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th>번호</th>-->
+<!--                    <th>방 이름</th>-->
+<!--                    <th>입장버튼</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr th:each="room : ${rooms}">-->
+<!--                    <td th:text="${room.id}"></td>-->
+<!--                    <td th:text="${room.name}"></td>-->
+<!--                    <td>-->
+<!--                        <a class = "btn btn-primary" th:href = "@{/rooms/{id} (id = ${room.roomId})}"></a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+
+
+            <form th:object="${rooms}" th:action="@{/api/chat/create}" th:method="post" >
+                <div class="form-group">
+                    <input th:type="text" id="name" th:field="*{name}" class="form-control">
+                    <button class="btn btn-primary" type="submit">create</button>
+                </div>
+            </form>
+
+        </div>
+    </body>
 </html>

@@ -1,13 +1,12 @@
 package com.example.webchat.controller;
 
 import com.example.webchat.dto.ChatRoom;
+import com.example.webchat.dto.ChatRoomForm;
 import com.example.webchat.services.ChatService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @Controller
 @RequestMapping(path = "/api/chat")
@@ -20,15 +19,14 @@ public class ChatController {
     }
 
     @PostMapping("/create")
-    @ApiOperation(value = "Test Sample", tags = "sample")
-    public ChatRoom createChatRoom(@RequestParam String name){
-        return chatService.createChatRoom(name);
+    public String createChatRoom(ChatRoomForm chatRoomForm){
+        chatService.createChatRoom(chatRoomForm.getName());
+        return "rooms";
     }
 
     @GetMapping("/")
-    @ApiOperation(value = "Test Sample", tags = "sample")
     public String getAllChatRoom(Model model){
         model.addAttribute("rooms", chatService.findAllChatRoom());
-        return "rooms";
+        return "sd";
     }
 }

@@ -34,11 +34,10 @@ public class ChatService {
         return chatRooms.get(id);
     }
 
-    public ChatRoom createChatRoom(String name){
+    public void createChatRoom(String name){
         String id = UUID.randomUUID().toString();
         ChatRoom newChatRoom = ChatRoom.of(id, name);
         chatRooms.put(id, newChatRoom);
-        return newChatRoom;
     }
 
     public void sendMessage(WebSocketSession webSocketSession, ChatMessage chatMessage){
